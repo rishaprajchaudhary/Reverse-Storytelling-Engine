@@ -1,0 +1,1 @@
+Get-Content 'C:\Program Files\php\php.ini' | ForEach-Object { $_ -replace ';extension=mysqli', 'extension=mysqli' -replace ';extension=pdo_mysql', 'extension=pdo_mysql' } | Set-Content 'C:\Program Files\php\php.ini.temp'

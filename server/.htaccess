@@ -1,0 +1,27 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Handle API requests
+RewriteRule ^api/auth/([^/]+)/?$ auth.php?action=$1 [L,QSA]
+RewriteRule ^api/story/([^/]+)/?$ story.php?action=$1 [L,QSA]
+RewriteRule ^api/ai/?$ ai.php [L,QSA]
+
+# Set default character set
+AddDefaultCharset UTF-8
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default document
+DirectoryIndex index.php
+
+# PHP error handling
+php_flag display_errors Off
+php_value error_reporting E_ALL
+
+# Allow CORS
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule> 
